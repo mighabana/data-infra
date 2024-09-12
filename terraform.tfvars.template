@@ -1,0 +1,15 @@
+# --------------------------------- GCP -----------------------------------
+google_project                = "<gcp_project_id>"
+admin_email                   = "<admin_account_email>"
+service_account               = "<service_account_email>"
+service_account_key_path      = "<path_to_service_account_json_key>"  # use full path
+gcp_service_list              = [
+  "servicenetworking.googleapis.com",    # Service Networking API
+  "compute.googleapis.com",              # Compute Engine API
+  "sqladmin.googleapis.com",             # Cloud SQL Admin API
+  "iap.googleapis.com",                  #  Cloud Identity-Aware Proxy API
+  "cloudresourcemanager.googleapis.com", # Cloud Resource Manager API (for managing audit logs)
+  "bigquery.googleapis.com",             # BigQuery API
+  "logging.googleapis.com",              # Cloud Logging API
+]
+
