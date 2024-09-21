@@ -35,3 +35,8 @@ variable "gcp_service_list" {
   type        = list(string)
   description = "List of API services to enable"
 }
+
+variable "google_takeout_source_list" {
+  type        = list(string)
+  description = "List of paths to Google Takeout zip files"
+}

@@ -13,3 +13,8 @@ gcp_service_list              = [
   "logging.googleapis.com",              # Cloud Logging API
 ]
 
+# data seeds
+google_takeout_source_list    = [ 
+  "<path_to_google_takeout_zip_file1>",
+  "<path_to_google_takeout_zip_file2>"
+]
