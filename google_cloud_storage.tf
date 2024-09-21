@@ -25,3 +25,13 @@ resource "google_storage_bucket_object" "google_takeout" {
 
   content_type = "application/zip"
 }
+
+resource "google_storage_bucket_object" "spotify" {
+  for_each = toset(var.spotify_source_list)
+
+  name = join("", ["spotify/", join("/", regex("([^\\/]\\w+)-(\\d{8}T\\d{6}.zip)", each.key))])
+  source = each.key
+  bucket = "data-seeds"
+
+  content_type = "application/zip"
+}

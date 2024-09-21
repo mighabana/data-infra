@@ -40,3 +40,8 @@ variable "google_takeout_source_list" {
   type        = list(string)
   description = "List of paths to Google Takeout zip files"
 }
+
+variable "spotify_source_list" {
+  type        = list(string)
+  description = "List of paths to Spotify zip files"
+}

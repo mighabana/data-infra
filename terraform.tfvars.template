@@ -16,5 +16,9 @@ gcp_service_list              = [
 # data seeds
 google_takeout_source_list    = [ 
   "<path_to_google_takeout_zip_file1>",
-  "<path_to_google_takeout_zip_file2>"
+  "<path_to_google_takeout_zip_file2>",
+]
+spotify_source_list           = [
+  "<path_to_spotify_zip_file1>",
+  "<path_to_spotify_zip_file2>",
 ]
