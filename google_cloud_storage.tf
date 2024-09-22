@@ -1,3 +1,31 @@
+# TODO: parameterize locations for all GCS buckets
+# would be good to find a way to track the cheapest locations (Europe, Asia, Americas)
+
+resource "google_storage_bucket" "compendium-test" {
+  name                     = "compendium-test"
+  location                 = "europe-west4"
+  force_destroy            = true
+  project                  = var.google_project
+  storage_class            = "STANDARD"
+  public_access_prevention = "enforced"
+
+  # delete any objects in the test bucket after 7 days
+  # anything stored here should not be critical and safe to delete
+  lifecycle_rule {
+    action {
+      type = "Delete"
+    }
+    condition {
+      age = 7 # days
+    }
+  }
+
+  # disable soft delete for test bucket
+  soft_delete_policy {
+    retention_duration_seconds = 0
+  }
+}
+
 resource "google_storage_bucket" "compendium-data" {
   name                     = "compendium-data"
   location                 = "europe-west4" 
