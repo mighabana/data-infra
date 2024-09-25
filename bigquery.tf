@@ -11,6 +11,11 @@ resource "google_bigquery_dataset" "bronze_spotify" {
     role          = "OWNER"
     user_by_email = var.admin_email
   }
+
+  access {
+    role          = "OWNER"
+    user_by_email = var.service_account
+  }
 }
 
 resource "google_bigquery_dataset" "bronze_google" {
@@ -25,5 +30,10 @@ resource "google_bigquery_dataset" "bronze_google" {
   access {
     role          = "OWNER"
     user_by_email = var.admin_email
+  }
+
+  access {
+    role          = "OWNER"
+    user_by_email = var.service_account
   }
 }
