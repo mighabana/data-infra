@@ -37,3 +37,23 @@ resource "google_bigquery_dataset" "bronze_google" {
     user_by_email = var.service_account
   }
 }
+
+resource "google_bigquery_dataset" "bronze_open_alex" {
+  dataset_id = "bronze_open_alex"
+  description = "Raw data extracted from OpenAlex"
+  location = "europe-west4"
+
+  labels = {
+    env = "default"
+  }
+
+  access {
+    role          = "OWNER"
+    user_by_email = var.admin_email
+  }
+
+  access {
+    role          = "OWNER"
+    user_by_email = var.service_account
+  }
+}
