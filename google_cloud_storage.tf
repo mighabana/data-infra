@@ -3,7 +3,7 @@
 
 resource "google_storage_bucket" "compendium-test" {
   name                     = "compendium-test"
-  location                 = "europe-west4"
+  location                 = var.region
   force_destroy            = true
   project                  = var.google_project
   storage_class            = "STANDARD"
@@ -28,7 +28,7 @@ resource "google_storage_bucket" "compendium-test" {
 
 resource "google_storage_bucket" "compendium-data" {
   name                     = "compendium-data"
-  location                 = "europe-west4" 
+  location                 = var.region
   force_destroy            = false
   project                  = var.google_project
   storage_class            = "NEARLINE"
@@ -37,7 +37,7 @@ resource "google_storage_bucket" "compendium-data" {
 
 resource "google_storage_bucket" "data-seeds" {
   name                     = "data-seeds"
-  location                 = "europe-west4" 
+  location                 = var.region
   force_destroy            = false
   project                  = var.google_project
   storage_class            = "NEARLINE"
