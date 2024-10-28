@@ -45,3 +45,23 @@ variable "spotify_source_list" {
   type        = list(string)
   description = "List of paths to Spotify zip files"
 }
+
+variable "vm_metabase_password" {
+  type = string
+  description = "User password for the metabase user on the metabase compute instance"
+}
+
+variable "metabase_vm_type" {
+  type        = string
+  description = "VM type for the Metabase compute instance"
+}
+
+variable "cloud_sql_instance_name" {
+  type        = string
+  description = "Cloud SQL instance name"
+}
+
+variable "cloud_sql_metabase_user_password" {
+  type = string
+  description = "Password for the Metabase user on Cloud SQL"
+}

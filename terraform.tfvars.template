@@ -13,7 +13,7 @@ gcp_service_list              = [
   "logging.googleapis.com",              # Cloud Logging API
 ]
 
-# data seeds
+# Data Seeds
 google_takeout_source_list    = [ 
   "<path_to_google_takeout_zip_file1>",
   "<path_to_google_takeout_zip_file2>",
@@ -22,3 +22,11 @@ spotify_source_list           = [
   "<path_to_spotify_zip_file1>",
   "<path_to_spotify_zip_file2>",
 ]
+
+# Metabase
+vm_metabase_password = "<metabase_password>"
+metabase_vm_type = "<vm_type>"
+
+# Cloud SQL
+cloud_sql_instance_name               = "<instance_name>"
+cloud_sql_metabase_user_password      = "<cloud_sql_password>"
