@@ -46,3 +46,16 @@ resource "google_sql_user" "metabase" {
   instance = google_sql_database_instance.sql.name
   password = var.cloud_sql_metabase_user_password
 }
+
+resource "google_sql_database" "prefect" {
+  name      = "prefect"
+  instance  = google_sql_database_instance.sql.name
+  charset   = "UTF8"
+  collation = "en_US.UTF8"
+}
+
+resource "google_sql_user" "prefect" {
+  name      = "prefect"
+  instance  = google_sql_database_instance.sql.name
+  password  = var.cloud_sql_prefect_user_password
+}
