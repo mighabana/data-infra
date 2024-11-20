@@ -47,15 +47,15 @@ resource "google_sql_user" "metabase" {
   password = var.cloud_sql_metabase_user_password
 }
 
-resource "google_sql_database" "prefect" {
-  name      = "prefect"
+resource "google_sql_database" "airflow" {
+  name      = "airflow"
   instance  = google_sql_database_instance.sql.name
   charset   = "UTF8"
   collation = "en_US.UTF8"
 }
 
-resource "google_sql_user" "prefect" {
-  name      = "prefect"
+resource "google_sql_user" "airflow" {
+  name      = "airflow"
   instance  = google_sql_database_instance.sql.name
-  password  = var.cloud_sql_prefect_user_password
+  password  = var.cloud_sql_airflow_user_password
 }

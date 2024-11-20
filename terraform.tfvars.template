@@ -27,11 +27,11 @@ spotify_source_list           = [
 vm_metabase_password = "<metabase_password>"
 metabase_vm_type     = "<vm_type>"
 
-# Prefect
-vm_prefect_password = "<prefect_password>"
-prefect_vm_type     = "<vm_type>"
+# Airflow
+vm_airflow_password = "<airflow_password>"
+airflow_vm_type     = "<vm_type>"
 
 # Cloud SQL
 cloud_sql_instance_name          = "<instance_name>"
 cloud_sql_metabase_user_password = "<cloud_sql_password>"
-cloud_sql_prefect_user_password  = "<cloud_sql_password>"
+cloud_sql_airflow_user_password  = "<cloud_sql_password>"

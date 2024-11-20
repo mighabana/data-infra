@@ -66,17 +66,17 @@ variable "cloud_sql_metabase_user_password" {
   description = "Password for the Metabase user on Cloud SQL"
 }
 
-variable "prefect_vm_type" {
+variable "airflow_vm_type" {
   type = string
-  description = "VM type for the Prefect compute instance"
+  description = "VM type for the Airflow compute instance"
 }
 
-variable "vm_prefect_password" {
+variable "vm_airflow_password" {
   type = string
-  description = "Password for the Prefect user on Prefect compute instance"
+  description = "Password for the Airflow user on Airflow compute instance"
 }
 
-variable "cloud_sql_prefect_user_password" {
+variable "cloud_sql_airflow_user_password" {
   type = string
-  description = "Password for the Prefect user on Cloud SQL"
+  description = "Password for the Airflow user on Cloud SQL"
 }

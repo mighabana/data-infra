@@ -1,3 +1,6 @@
+# env vars
+.envrc
+
 # terraform
 .terraform/
 .terraform.lock.hcl

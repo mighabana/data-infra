@@ -69,15 +69,15 @@ resource "google_compute_instance" "metabase" {
   }
 }
 
-# Prefect Instance
+# Airflow Instance
 
-resource "google_compute_address" "prefect-static-ip" {
-  name = "prefect-static-ip"
+resource "google_compute_address" "airflow-static-ip" {
+  name = "airflow-static-ip"
 }
 
-resource "google_compute_instance" "prefect" {
-  name                      = "prefect"
-  machine_type              = var.prefect_vm_type
+resource "google_compute_instance" "airflow" {
+  name                      = "airflow"
+  machine_type              = var.airflow_vm_type
   zone                      = var.zone
   tags                      = ["http", "https", "ssh", "postgres"]
   allow_stopping_for_update = true
@@ -86,7 +86,7 @@ resource "google_compute_instance" "prefect" {
 
 
   # install docker (https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
-  # setup prefect user
+  # setup airflow user
   metadata_startup_script = <<EOT
     sudo apt-get update
     sudo apt-get install --yes ca-certificates curl
@@ -102,18 +102,18 @@ resource "google_compute_instance" "prefect" {
 
     sudo apt-get install --yes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-    sudo adduser --gecos "" --disabled-password prefect
-    chpasswd <<<"prefect:${var.vm_prefect_password}"
-    sudo chmod 0750 /home/prefect
-    sudo chage -m 5 -M 90 -W 14 prefect
+    sudo adduser --gecos "" --disabled-password airflow
+    chpasswd <<<"airflow:${var.vm_airflow_password}"
+    sudo chmod 0750 /home/airflow
+    sudo chage -m 5 -M 90 -W 14 airflow
 
-    sudo adduser prefect sudo
-    sudo adduser prefect docker
+    sudo adduser airflow sudo
+    sudo adduser airflow docker
   EOT
 
   labels = {
     "owner_id"   = "mighabana",
-    "project_id" = "prefect"
+    "project_id" = "airflow"
   }
 
   boot_disk {
@@ -127,7 +127,7 @@ resource "google_compute_instance" "prefect" {
     network    = google_compute_network.network.name
     subnetwork = google_compute_subnetwork.subnetwork.name
     access_config {
-      nat_ip = google_compute_address.prefect-static-ip.address
+      nat_ip = google_compute_address.airflow-static-ip.address
     }
   }
 
