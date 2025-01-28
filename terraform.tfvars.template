@@ -11,6 +11,7 @@ gcp_service_list              = [
   "cloudresourcemanager.googleapis.com", # Cloud Resource Manager API (for managing audit logs)
   "bigquery.googleapis.com",             # BigQuery API
   "logging.googleapis.com",              # Cloud Logging API
+  "networkmanagement.googleapis.com",    # Network Management API (for connectivity tests)
 ]
 
 # Data Seeds
@@ -25,11 +26,11 @@ spotify_source_list           = [
 
 # Metabase
 vm_metabase_password = "<metabase_password>"
-metabase_vm_type     = "<vm_type>"
+metabase_vm_type     = "e2-custom-medium-4864"
 
 # Airflow
 vm_airflow_password = "<airflow_password>"
-airflow_vm_type     = "<vm_type>"
+airflow_vm_type     = "e2-standard-2"
 
 # Cloud SQL
 cloud_sql_instance_name          = "<instance_name>"
