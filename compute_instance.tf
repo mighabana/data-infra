@@ -9,8 +9,8 @@ resource "google_compute_instance" "metabase" {
   zone                      = var.zone
   tags                      = ["http", "https", "ssh", "postgres"]
   allow_stopping_for_update = true
-  deletion_protection = false
-  depends_on = [google_compute_network.network, google_compute_subnetwork.subnetwork]
+  deletion_protection       = false
+  depends_on                = [google_compute_network.network, google_compute_subnetwork.subnetwork]
 
 
   # install docker (https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
@@ -46,8 +46,8 @@ resource "google_compute_instance" "metabase" {
 
   boot_disk {
     initialize_params {
-      image  = "ubuntu-os-cloud/ubuntu-2004-lts"
-      size   = 20
+      image = "ubuntu-os-cloud/ubuntu-2004-lts"
+      size  = 20
     }
   }
 
@@ -63,7 +63,7 @@ resource "google_compute_instance" "metabase" {
     email  = var.service_account
     scopes = ["cloud-platform", "https://www.googleapis.com/auth/drive.readonly"]
   }
-  
+
   metadata = {
     google-monitoring-enabled = true
   }
@@ -81,8 +81,8 @@ resource "google_compute_instance" "airflow" {
   zone                      = var.zone
   tags                      = ["http", "https", "ssh", "postgres"]
   allow_stopping_for_update = true
-  deletion_protection = false
-  depends_on = [google_compute_network.network, google_compute_subnetwork.subnetwork]
+  deletion_protection       = false
+  depends_on                = [google_compute_network.network, google_compute_subnetwork.subnetwork]
 
 
   # install docker (https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
@@ -118,8 +118,8 @@ resource "google_compute_instance" "airflow" {
 
   boot_disk {
     initialize_params {
-      image  = "ubuntu-os-cloud/ubuntu-2004-lts"
-      size   = 20
+      image = "ubuntu-os-cloud/ubuntu-2004-lts"
+      size  = 20
     }
   }
 
@@ -135,7 +135,7 @@ resource "google_compute_instance" "airflow" {
     email  = var.service_account
     scopes = ["cloud-platform", "https://www.googleapis.com/auth/drive.readonly"]
   }
-  
+
   metadata = {
     google-monitoring-enabled = true
   }

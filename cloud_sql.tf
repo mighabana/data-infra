@@ -10,13 +10,13 @@ resource "google_service_networking_connection" "sql" {
   network                 = google_compute_network.network.self_link
   service                 = "servicenetworking.googleapis.com"
   reserved_peering_ranges = [google_compute_global_address.private_ip_alloc.name]
-  provider = google-beta
+  provider                = google-beta
 }
 
 resource "google_sql_database_instance" "sql" {
-  name             = var.cloud_sql_instance_name
-  region           = var.region
-  database_version = "POSTGRES_15"
+  name                = var.cloud_sql_instance_name
+  region              = var.region
+  database_version    = "POSTGRES_15"
   deletion_protection = false
 
   depends_on = [
@@ -24,7 +24,8 @@ resource "google_sql_database_instance" "sql" {
   ]
 
   settings {
-    tier = "db-custom-1-3840"
+    edition = "ENTERPRISE"
+    tier    = "db-custom-1-3840"
 
     ip_configuration {
       ipv4_enabled                                  = false
@@ -55,7 +56,7 @@ resource "google_sql_database" "airflow" {
 }
 
 resource "google_sql_user" "airflow" {
-  name      = "airflow"
-  instance  = google_sql_database_instance.sql.name
-  password  = var.cloud_sql_airflow_user_password
+  name     = "airflow"
+  instance = google_sql_database_instance.sql.name
+  password = var.cloud_sql_airflow_user_password
 }

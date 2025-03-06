@@ -7,7 +7,7 @@ resource "google_compute_network" "network" {
 
 resource "google_compute_subnetwork" "subnetwork" {
   name          = "compendium-network-subnetwork"
-  ip_cidr_range = "10.9.0.0/16"
+  ip_cidr_range = var.ip_cidr_range
   region        = var.region
   network       = google_compute_network.network.id
 }
@@ -64,27 +64,27 @@ resource "google_compute_firewall" "allow-postgres" {
     ports    = ["5432"]
   }
 
-  destination_ranges = [ join("", [google_compute_global_address.private_ip_alloc.address,"/",google_compute_global_address.private_ip_alloc.prefix_length])]
+  destination_ranges = [join("", [google_compute_global_address.private_ip_alloc.address, "/", google_compute_global_address.private_ip_alloc.prefix_length])]
   target_tags        = ["postgres"]
 }
 
 resource "google_compute_firewall" "dev-mode" {
-  name = "dev-mode"
-  network = google_compute_network.network.name
+  name      = "dev-mode"
+  network   = google_compute_network.network.name
   direction = "INGRESS"
 
   allow {
     protocol = "tcp"
-    ports = ["3000"]
+    ports    = ["3000"]
   }
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags = ["dev"]
+  target_tags   = ["dev"]
 }
 
 resource "google_compute_firewall" "allow-icmp-tcp-internal" {
-  name   = "allow-icmp-tcp-internal"
-  network = google_compute_network.network.name
+  name      = "allow-icmp-tcp-internal"
+  network   = google_compute_network.network.name
   direction = "EGRESS"
 
   allow {
@@ -93,8 +93,8 @@ resource "google_compute_firewall" "allow-icmp-tcp-internal" {
 
   allow {
     protocol = "tcp"
-    ports = ["443", "80"]
+    ports    = ["443", "80"]
   }
 
-  source_ranges = ["10.9.0.0/16"]
+  source_ranges = [var.ip_cidr_range]
 }

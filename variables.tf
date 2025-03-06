@@ -7,13 +7,13 @@ variable "google_project" {
 variable "region" {
   type        = string
   description = "Region value to use for creating resources"
-  default     = "asia-southeast1"
+  default     = "europe-west4"
 }
 
 variable "zone" {
   type        = string
   description = "Zone value to use for creating resources"
-  default     = "asia-southeast1-a"
+  default     = "europe-west4-b"
 }
 
 variable "admin_email" {
@@ -47,7 +47,7 @@ variable "spotify_source_list" {
 }
 
 variable "vm_metabase_password" {
-  type = string
+  type        = string
   description = "Password for the Metabase user on the Metabase compute instance"
 }
 
@@ -62,21 +62,26 @@ variable "cloud_sql_instance_name" {
 }
 
 variable "cloud_sql_metabase_user_password" {
-  type = string
+  type        = string
   description = "Password for the Metabase user on Cloud SQL"
 }
 
 variable "airflow_vm_type" {
-  type = string
+  type        = string
   description = "VM type for the Airflow compute instance"
 }
 
 variable "vm_airflow_password" {
-  type = string
+  type        = string
   description = "Password for the Airflow user on Airflow compute instance"
 }
 
 variable "cloud_sql_airflow_user_password" {
-  type = string
+  type        = string
   description = "Password for the Airflow user on Cloud SQL"
+}
+
+variable "ip_cidr_range" {
+  type        = string
+  description = "IP CIDR range for the project's subnetwork"
 }
